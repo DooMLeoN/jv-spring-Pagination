@@ -2,6 +2,7 @@ package com.example.demo.sercise;
 
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -28,5 +29,10 @@ public class ProductServiseImpl implements ProductServise {
     @Override
     public List<Product> findAllByPriseBetween(BigDecimal from, BigDecimal to) {
         return repository.findAllByPriseBetween(from, to);
+    }
+
+    @Override
+    public List<Product> getAll(PageRequest pageRequest) {
+        return repository.findAll(pageRequest).toList();
     }
 }
